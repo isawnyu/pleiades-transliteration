@@ -1,19 +1,5 @@
-# Copyright 2009, 2010 Institute for the Study of the Ancient World, New York University
-
-# This file is part of pleiades.transliteration
-
-# pleiades.transliteration is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# pleiades.transliteration is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with pleiades.transliteration.  If not, see <http://www.gnu.org/licenses/>.
+# Copyright 2009, 2010 Institute for the Study of the Ancient World, New York
+# University
 
 latn_capital = {
     u"A" : "A",    # Latin capital letter a
@@ -77,8 +63,9 @@ legal_punctuation = {
 def validate(value, allow):
     invalids = []
     for i, c in enumerate(value):
-        # verify character is within the possible general ranges, if not, mark it as invalid and move on
-        # otherwise, check to make sure the character is truly valid (ranges are sparsely populated)
+        # verify character is within the possible general ranges, if not, mark
+        # it as invalid and move on otherwise, check to make sure the character
+        # is truly valid (ranges are sparsely populated)
         cval = ord(c)
         if cval in range(65, 90) or cval in range(97, 122):
             b = None
@@ -87,17 +74,23 @@ def validate(value, allow):
                     b = latn_small[c]
                 except:
                     pass
-            if not(b) and ('capital' in allow or 'mixed' in allow or 'all' in allow):
+            if not(b) and (
+                'capital' in allow or 'mixed' in allow or 'all' in allow):
                 try:
                     b = latn_capital[c]
                 except:
                     pass
             if not(b):
-                invalids.append({'position':i, 'character':c, 'reason':'illegal character in appropriate Unicode range'})
+                invalids.append({
+                    'position': i, 
+                    'character': c, 
+                    'reason': 'illegal character in appropriate Unicode range'})
         else:
-            invalids.append({'position':i, 'character':c, 'reason':'illegal character from outside appropriate Unicode range'})
+            invalids.append({
+                'position': i, 
+                'character': c, 
+                'reason': 'illegal character outside appropriate Unicode range'})
     return invalids
-
 
 def transliterate(value):
     transliteration = ''
