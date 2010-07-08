@@ -1,40 +1,25 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2009, 2010 Institute for the Study of the Ancient World, New York University
-
-# This file is part of pleiades.transliteration
-
-# pleiades.transliteration is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# pleiades.transliteration is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with pleiades.transliteration.  If not, see <http://www.gnu.org/licenses/>.
+# Copyright 2009, 2010 Institute for the Study of the Ancient World, New York
+# University
 
 """
-The assumption is that this transliterator should work according to the
-rules of the Barrington Atlas. In the introduction to the Map-by-Map
-Directory (p. vii) its Greek transliteration rules are described as follows:
+The assumption is that this transliterator should work according to the rules
+of the Barrington Atlas. In the introduction to the Map-by-Map Directory (p.
+vii) its Greek transliteration rules are described as follows:
 
-Ancient Greek names are transcribed literally, though without marking
-accents or long vowels. Th is used for theta, k for kappa, x for xi, ch for
-chi, ps for psi. Combinations with gamma such as gg or gk become ng and nk,
-etc. Upsilon with another vowel remains u (thus au for alpha + upsilon);
-otherwise it normally becomes y. Rho’s rough breathing is optional for
-initial rho (which can thus appear as either Rh or R), but elsewhere in the
-word it is omitted in the case of names attested only in Greek. Subscripts
-are ignored.
+Ancient Greek names are transcribed literally, though without marking accents
+or long vowels. Th is used for theta, k for kappa, x for xi, ch for chi, ps for
+psi. Combinations with gamma such as gg or gk become ng and nk, etc. Upsilon
+with another vowel remains u (thus au for alpha + upsilon); otherwise it
+normally becomes y. Rho’s rough breathing is optional for initial rho (which
+can thus appear as either Rh or R), but elsewhere in the word it is omitted in
+the case of names attested only in Greek. Subscripts are ignored.
 
 The current code does some of this, but doesn't live up to all aspects,
-especially dealing with two-letter combinations; needs a major rework
-including some enforced assumptions about unicode normalization form,
-capitalization and so forth
+especially dealing with two-letter combinations; needs a major rework including
+some enforced assumptions about unicode normalization form, capitalization and
+so forth
 """
 
 grek_unaccented_capital = {
@@ -317,8 +302,11 @@ legal_punctuation = {
 def validate(value, allow):
     invalids = []
     for i, c in enumerate(value):
-        # verify character is within the possible general ranges, if not, mark it as invalid and move on
-        # otherwise, check to make sure the character is truly valid (ranges are sparsely populated)
+
+    # verify character is within the possible general ranges, if not, mark it
+    # as invalid and move on otherwise, check to make sure the character is
+    # truly valid (ranges are sparsely populated)
+    
         cval = ord(c)
         if cval in range(880, 1023) or cval in range(7936, 8191):
             b = None
@@ -327,7 +315,8 @@ def validate(value, allow):
                     b = grek_unaccented_small[c]
                 except:
                     pass
-            if not(b) and ('capital' in allow or 'mixed' in allow or 'all' in allow):
+            if not(b) and (
+                'capital' in allow or 'mixed' in allow or 'all' in allow):
                 try:
                     b = grek_unaccented_capital[c]
                 except:
@@ -338,7 +327,8 @@ def validate(value, allow):
                         b = grek_accented_ancient_small[c]
                     except:
                         pass
-                if not(b) and ('capital' in allow or 'mixed' in allow or 'all' in allow):
+                if not(b) and (
+                    'capital' in allow or 'mixed' in allow or 'all' in allow):
                     try:
                         b= grek_accented_ancient_capital[c]
                     except:
@@ -349,15 +339,22 @@ def validate(value, allow):
                         b = grek_accented_modern_small[c]
                     except:
                         pass
-                if not(b) and ('capital' in allow or 'mixed' in allow or 'all' in allow):
+                if not(b) and (
+                    'capital' in allow or 'mixed' in allow or 'all' in allow):
                     try:
                         b = grek_accented_modern_capital[c]
                     except:
                         pass
             if not(b):
-                invalids.append({'position':i, 'character':c, 'reason':'illegal character in appropriate Unicode range'})
+                invalids.append({
+                    'position': i, 
+                    'character': c, 
+                    'reason': 'illegal character in appropriate Unicode range'})
         else:
-            invalids.append({'position':i, 'character':c, 'reason':'illegal character from outside appropriate Unicode range'})
+            invalids.append({
+                'position': i, 
+                'character': c, 
+                'reason': 'illegal character outside appropriate Unicode range'})
     return invalids
 
 
@@ -395,4 +392,3 @@ def transliterate(value):
     
     # what to do about 03D8 - 03E1 which includes various digammas, koppas and 
     # sampis
-        
