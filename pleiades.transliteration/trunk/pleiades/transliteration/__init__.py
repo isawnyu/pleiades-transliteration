@@ -9,7 +9,7 @@ def transliterate_name(lang, name_utf8):
     else:
         name = unicode(name_utf8, 'utf-8')
     if wsystem == 'en':
-        return name
+        return name.encode('utf-8')
     elif wsystem == 'grc' or wsystem == 'la-grek':
         return ws_grek.transliterate(name)
     elif wsystem == 'la' or wsystem == 'grc-latn':

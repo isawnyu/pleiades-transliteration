@@ -35,13 +35,31 @@ Aphrodisiensis in Greek characters (no accents)
   >>> name = u'\u1f08\u03c6\u03c1\u03bf\u03b4\u03b9\u03c3\u03b9\u03b5\u03bd\u03c3\u03b9\u03c2'
   >>> transliterate_name('la-grek', name)
   'Aphrodisiensis'
+  
+Zeugma in English
+
+  >>> name = u'Zeugma'
+  >>> transliterate_name('en', name)
+  'Zeugma'
+  
+Zeugma in Greek
+
+  >>> name = u'\u0396\u03b5\u1fe6\u03b3\u03bc\u03b1'
+  >>> transliterate_name('grc', name)
+  'Zeugma'
+  
+Zeugma in Latin
+
+  >>> name = u'Zeugma'
+  >>> transliterate_name('la', name)
+  'Zeugma'
 
 Invalid script
 
-  >>> transliterate_name('en', 'Ryland') # doctest: +ELLIPSIS
+  >>> transliterate_name('tlh', 'kitten') # doctest: +ELLIPSIS
   Traceback (most recent call last):
   ...
-  ValueError: Unsupported writing system (en)
+  ValueError: Unsupported writing system (tlh)
     
 Editorial characters that should be permitted
 

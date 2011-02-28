@@ -289,7 +289,9 @@ grek_accented_ancient_small = {
     u"\u1FC3" : "e",  # Greek small letter eta with ypogegrammeni
     u"\u1FC4" : "e",  # Greek small letter eta with oxi and ypogegrammeni
     u"\u1FC6" : "e",  # Greek small letter eta with perispomeni
-    u"\u1FC7" : "e"  # Greek small letter eta with perispomeni and ypogegrammeni
+    u"\u1FC7" : "e",  # Greek small letter eta with perispomeni and ypogegrammeni
+    u"\u1FE6" : "u", # Greek small letter upsilon with perispomeni
+    u"\u1FE7" : "u" # Greek small letter upsilon with dialytika and perispomeni
 }
 
 legal_punctuation = {
