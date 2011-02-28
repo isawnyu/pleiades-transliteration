@@ -1,6 +1,12 @@
 Changelog
 =========
 
+
+0.2 - Unreleased
+----------------
+
+* nosetests, BSD 
+
 0.1 - Unreleased
 ----------------
 
