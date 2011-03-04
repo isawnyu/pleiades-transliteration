@@ -61,9 +61,10 @@ en_small = {
     u"z" : "z"     # English capital letter z
 }
 
+# legal punctuation (for lacunae)
 legal_punctuation = {
     u"(" : "(",
-    u")" : ")",
+    u")" : ")", 
     u"." : "."
 }
 
@@ -85,11 +86,6 @@ def validate(value, allow):
             if not(b) and ('capital' in allow or 'mixed' in allow or 'all' in allow):
                 try:
                     b = en_capital[c]
-                except:
-                    pass
-            if not(b):
-                try:
-                    b = legal_punctuation[c]
                 except:
                     pass
             if not(b):

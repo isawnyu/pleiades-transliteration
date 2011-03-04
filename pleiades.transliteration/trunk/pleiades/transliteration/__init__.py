@@ -2,6 +2,7 @@ import ws_grek
 import ws_latn
 import ws_en
 import ws_tr
+import ws_copt
 
 def transliterate_name(lang, name_utf8):
     """Transliterate into modern Roman."""
@@ -18,6 +19,8 @@ def transliterate_name(lang, name_utf8):
         return ws_latn.transliterate(name)
     elif wsystem == 'tr':
         return ws_tr.transliterate(name)
+    elif wsystem == 'cop':
+        return ws_copt.transliterate(name)
     else:
         raise ValueError, 'Unsupported writing system (%s)' % lang
     
