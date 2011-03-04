@@ -69,11 +69,13 @@ tr_small = {
     u"z" : "z"     # Turkish capital letter z
 }
 
+# legal punctuation (for lacunae)
 legal_punctuation = {
     u"(" : "(",
-    u")" : ")",
+    u")" : ")", 
     u"." : "."
 }
+
 
 
 def validate(value, allow):
@@ -94,11 +96,6 @@ def validate(value, allow):
                 'capital' in allow or 'mixed' in allow or 'all' in allow):
                 try:
                     b = tr_capital[c]
-                except:
-                    pass
-            if not(b):
-                try:
-                    b = legal_punctuation[c]
                 except:
                     pass
             if not(b):

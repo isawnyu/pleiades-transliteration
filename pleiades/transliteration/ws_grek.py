@@ -294,9 +294,10 @@ grek_accented_ancient_small = {
     u"\u1FE7" : "u" # Greek small letter upsilon with dialytika and perispomeni
 }
 
+# legal punctuation (for lacunae)
 legal_punctuation = {
     u"(" : "(",
-    u")" : ")",
+    u")" : ")", 
     u"." : "."
 }
 
@@ -347,11 +348,6 @@ def validate(value, allow):
                         b = grek_accented_modern_capital[c]
                     except:
                         pass
-            if not(b):
-                try:
-                    b = legal_punctuation[c]
-                except:
-                    pass
             if not(b):
                 invalids.append({
                     'position': i, 
