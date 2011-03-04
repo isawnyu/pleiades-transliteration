@@ -36,11 +36,16 @@ Aphrodisiensis in Greek characters (no accents)
   >>> transliterate_name('la-grek', name)
   'Aphrodisiensis'
   
-Zeugma in English
+all characters in English
 
-  >>> name = u'Zeugma'
+  >>> name = u'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.()'
   >>> transliterate_name('en', name)
-  'Zeugma'
+  'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.()'
+  
+all characters in Turkish
+  >>> name = u'ABC\u00c7DEFG\u011eHI\u0130JKLMNO\u00d6PRS\u015eTU\u00dcVYZ abc\u00e7defg\u011fh\u0131ijklmno\u00f6prs\u015ftu\u00fcvyz.()'
+  >>> transliterate_name('tr', name)
+  'ABCCDEFGGHIIJKLMNOOPRSSTUUVYZ abccdefgghiijklmnooprsstuuvyz.()'
   
 Zeugma in Greek
 
