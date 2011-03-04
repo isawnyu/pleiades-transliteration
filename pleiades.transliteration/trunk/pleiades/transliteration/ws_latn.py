@@ -83,6 +83,11 @@ def validate(value, allow):
                 except:
                     pass
             if not(b):
+                try:
+                    b = legal_punctuation[c]
+                except:
+                    pass
+            if not(b):
                 invalids.append({
                     'position': i, 
                     'character': c, 
