@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Copyright 2009, 2010 Institute for the Study of the Ancient World, New York
 # University
 
@@ -67,7 +69,7 @@ def validate(value, allow):
         # it as invalid and move on otherwise, check to make sure the character
         # is truly valid (ranges are sparsely populated)
         cval = ord(c)
-        if cval in range(65, 90) or cval in range(97, 122):
+        if cval in range(0x0028, 0x007A):
             b = None
             if 'small' in allow or 'mixed' in allow or 'all' in allow:
                 try:

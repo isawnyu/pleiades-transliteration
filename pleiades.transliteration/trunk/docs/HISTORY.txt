@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.4 (2011-03-04)
+------------------
+- Added range-checking for English
+- Added Turkish support
+
 0.3.1 (2011-02-28)
 ------------------
 - Added missing Greek support (upsilon with perispomeni)

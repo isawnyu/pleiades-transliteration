@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.3.1'
+version = '0.4'
 
 setup(name='pleiades.transliteration',
       version=version,
-      description="Transliteration of names from Greek and Latin writing systems to our modern Roman writing system following conventions of the Classical Atlas Project.",
+      description="Transliteration of names from various writing systems to our modern Roman writing system following conventions of the Pleiades Project.",
       long_description=open("README.txt").read(),
       classifiers=[
         "Programming Language :: Python",
