@@ -117,16 +117,17 @@ legal_punctuation = {
 
         
 def validate(value, allow):
-    valids = buildv()
     invalids = []
     
     for i, c in enumerate(value):
         # verify character is within the possible general ranges, if not, mark it as invalid and move on
         # otherwise, check to make sure the character is truly valid (ranges are sparsely populated)
         cval = ord(c)
-        if cval in range(0x2c80, 0x2cff) or cval in range(0x0370,0x03ff) or cval in range(0x0028, 0x0029) or cval == 0x002E:
+        if cval in range(0x2c80, 0x2d00) or cval in range(0x0370,0x0400) or c == u' ':
             b = None
-            if 'small' in allow or 'mixed' in allow or 'all' in allow:
+            if c == u' ':
+                b = c
+            if not(b) and ('small' in allow or 'mixed' in allow or 'all' in allow):
                 try:
                     b = copt_small[c]
                 except:

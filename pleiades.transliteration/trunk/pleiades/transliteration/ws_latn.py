@@ -70,9 +70,11 @@ def validate(value, allow):
         # it as invalid and move on otherwise, check to make sure the character
         # is truly valid (ranges are sparsely populated)
         cval = ord(c)
-        if cval in range(0x0028, 0x007A):
+        if cval in range(0x0028, 0x007B) or c  == u' ':
             b = None
-            if 'small' in allow or 'mixed' in allow or 'all' in allow:
+            if c == u' ':
+                b = c
+            if not(b) and ('small' in allow or 'mixed' in allow or 'all' in allow):
                 try:
                     b = latn_small[c]
                 except:

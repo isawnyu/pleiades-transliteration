@@ -85,9 +85,11 @@ def validate(value, allow):
         # it as invalid and move on otherwise, check to make sure the character
         # is truly valid (ranges are sparsely populated)
         cval = ord(c)
-        if cval in range(0x0028, 0x007A) or cval in range(0x0088, 0x00FF) or cval in range(0x0100, 0x017F):
+        if cval in range(0x0028, 0x007B) or cval in range(0x0088, 0x0180) or c == u' ':
             b = None
-            if 'small' in allow or 'mixed' in allow or 'all' in allow:
+            if c == u' ':
+                b = c
+            if not(b) and ('small' in allow or 'mixed' in allow or 'all' in allow):
                 try:
                     b = tr_small[c]
                 except:

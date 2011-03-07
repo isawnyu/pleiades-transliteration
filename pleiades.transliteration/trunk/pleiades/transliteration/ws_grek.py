@@ -311,9 +311,11 @@ def validate(value, allow):
     # truly valid (ranges are sparsely populated)
     
         cval = ord(c)
-        if cval in range(880, 1023) or cval in range(7936, 8191) or cval in range(0x0028, 0x0029) or cval == 0x002E:
+        if cval in range(880, 1024) or cval in range(7936, 8192) or c == u' ':
             b = None
-            if 'small' in allow or 'mixed' in allow or 'all' in allow:
+            if c == u' ':
+                b = c
+            if not(b) and ('small' in allow or 'mixed' in allow or 'all' in allow):
                 try:
                     b = grek_unaccented_small[c]
                 except:
