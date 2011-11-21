@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6 (2011-11-21)
+----------------
+- Transliterate only in the existing en/la/grc/tr cases, looking forward to
+  eliminating the automated transliterations.
+
 0.5 (2011-03-07)
 ----------------
 - Removed modern punctuation checking from individual validators since we want
