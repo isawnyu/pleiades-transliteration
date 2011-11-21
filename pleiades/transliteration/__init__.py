@@ -22,5 +22,5 @@ def transliterate_name(lang, name_utf8):
     elif wsystem == 'cop':
         return ws_copt.transliterate(name)
     else:
-        raise ValueError, 'Unsupported writing system (%s)' % lang
-    
+        # raise ValueError, 'Unsupported writing system (%s)' % lang
+        return name
